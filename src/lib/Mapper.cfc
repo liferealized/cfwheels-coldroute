@@ -533,7 +533,7 @@
 			
 			// escape any dots in pattern, and further mask pattern variables
 			// NOTE: this keeps constraint patterns from being replaced twice
-			loc.regex = REReplace(arguments.pattern, "([.])", "\\\1", "ALL");
+			loc.regex = REReplace(arguments.pattern, "([.])", "\\1", "ALL");
 			loc.regex = REReplace(loc.regex, "\[(\*?\w+)\]", ":::\1:::", "ALL");
 			
 			// replace known variable keys using constraints

@@ -263,7 +263,7 @@
 	
 	<cffunction name="root" returntype="struct" access="public" hint="Match root directory">
 		<cfargument name="to" type="string" required="false" />
-		<cfreturn match(name="root", pattern="/", argumentCollection=arguments) />
+		<cfreturn match(name="root", pattern="/(.[format])", argumentCollection=arguments) />
 	</cffunction>
 	
 	<cffunction name="wildcard" returntype="struct" access="public" hint="Special wildcard matching">

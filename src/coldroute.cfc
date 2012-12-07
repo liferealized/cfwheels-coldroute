@@ -277,10 +277,13 @@
 	
 	<cffunction name="$getRequestMethod" mixin="dispatch" returntype="string" access="public" hint="Determine HTTP verb used in request">
 		<cfscript>
-			
 			// if request is a post, check for alternate verb
 			if (cgi.request_method EQ "post" AND StructKeyExists(form, "_method"))
 				return form["_method"];
+
+			// if request is a get, check for alternate verb
+			if (cgi.request_method EQ "get" AND StructKeyExists(url, "_method"))
+				return url["_method"];
 			
 			return cgi.request_method;
 		</cfscript>

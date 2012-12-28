@@ -681,45 +681,6 @@
 	</cfscript>
 	<cfreturn loc.returnValue>
 </cffunction>
-
-    <cffunction name="$objectFileName" mixin="global" returntype="string" access="public" output="false">
-        <cfargument name="name" type="string" required="true">
-        <cfargument name="objectPath" type="string" required="true">
-        <cfargument name="type" type="string" required="true" hint="Can be either `controller` or `model`." />
-        <cfscript>
-            var loc = {};
-            loc.objectFileExists = false;
-    		
-			// the code below is now handled in the dispatch object
-			
-            // if the name contains the delimiter let's capitalize the last element and append it back to the list
-            // if (ListLen(arguments.name, ".") gt 1)
-            //     arguments.name = ListInsertAt(arguFments.name, ListLen(arguments.name, "."), capitalize(ListLast(arguments.name, ".")), ".");
-            // else
-            //     arguments.name = capitalize(arguments.name);
-    
-            // we are going to store the full controller path in the existing / non-existing lists so we can have controllers in multiple places
-            loc.fullObjectPath = arguments.objectPath & "/" & ListChangeDelims(arguments.name, '/', '.');
-    
-            if (!ListFindNoCase(application.wheels.existingObjectFiles, loc.fullObjectPath) && !ListFindNoCase(application.wheels.nonExistingObjectFiles, loc.fullObjectPath))
-            {
-                if (FileExists(ExpandPath("#loc.fullObjectPath#.cfc")))
-                    loc.objectFileExists = true;
-                if (application.wheels.cacheFileChecking)
-                {
-                    if (loc.objectFileExists)
-                        application.wheels.existingObjectFiles = ListAppend(application.wheels.existingObjectFiles, loc.fullObjectPath);
-                    else
-                        application.wheels.nonExistingObjectFiles = ListAppend(application.wheels.nonExistingObjectFiles, loc.fullObjectPath);
-                }
-            }
-            if (ListFindNoCase(application.wheels.existingObjectFiles, loc.fullObjectPath) || loc.objectFileExists)
-                loc.returnValue = arguments.name;
-            else
-                loc.returnValue = capitalize(arguments.type);
-        </cfscript>
-        <cfreturn loc.returnValue>
-    </cffunction>
     
 	<cffunction name="$generateRenderWithTemplatePath" access="public" output="false" returntype="string" hint="">
 		<cfargument name="controller" type="string" required="true">

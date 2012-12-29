@@ -207,7 +207,7 @@
 				else if (StructKeyExists(loc.route, loc.property))
 					loc.value = loc.route[loc.property];
 				else if (arguments.route NEQ "" AND arguments.$URLRewriting NEQ "Off")
-					$throw(type="Wheels", message="Incorrect Arguments", extendedInfo="The route chosen by Wheels `#loc.route.name#` requires the argument `#loc.property#`. Pass the argument `#loc.property#` or change your routes to reflect the proper variables needed.");
+					$throw(type="Wheels.IncorrectRoutingArguments", message="Incorrect Arguments", extendedInfo="The route chosen by Wheels `#loc.route.name#` requires the argument `#loc.property#`. Pass the argument `#loc.property#` or change your routes to reflect the proper variables needed.");
 				else
 					continue;
 					

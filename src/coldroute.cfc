@@ -115,7 +115,7 @@
         <cfreturn loc.returnValue />
     </cffunction>
 	
-	<cffunction name="URLFor" mixin="controller" returntype="string" access="public" output="false">
+	<cffunction name="URLFor" returntype="string" access="public" output="false">
 		<cfargument name="route" type="string" required="false" default="" hint="Name of a route that you have configured in `config/routes.cfm`.">
 		<cfargument name="controller" type="string" required="false" default="" hint="Name of the controller to include in the URL.">
 		<cfargument name="action" type="string" required="false" default="" hint="Name of the action to include in the URL.">

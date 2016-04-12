@@ -690,7 +690,7 @@
 			var templateName = "";
 			
 			if (!Len(arguments.template))
-				templateName = "/" & Replace(arguments.controller, ".", "/") & "/" & arguments.action;
+				templateName = "/" & Replace(arguments.controller, ".", "/", "all") & "/" & arguments.action;
 			else
 				templateName = arguments.template;
 				
